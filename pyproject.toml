@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "aiogram-template-bot"
+version = "0.1.0"
+description = ""
+authors = ["veledara"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "^3.15.0"
+sqlalchemy = "^2.0.36"
+asyncpg = "^0.30.0"
+pydantic-settings = "^2.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

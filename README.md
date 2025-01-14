@@ -34,7 +34,7 @@
     ```
     
 
-## features to-do list
+## template features to-do list
 
 - [x] Поддержка передачи параметра в `/start` с сохранением его в БД (referral code)
 - [x] Пользовательское соглашение, без принятия которого невозможно продолжить работу
@@ -43,3 +43,8 @@
     - [ ] Рекламная рассылка
     - [ ] Добавление другого администратора
     - [ ] Бан пользователя
+     
+## technical features to-do list
+
+- [ ] docker-compose + dockefile
+- [ ] alembic migrations

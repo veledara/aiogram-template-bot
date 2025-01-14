@@ -41,22 +41,30 @@ class UserCheckMiddleware(BaseMiddleware):
 
         # Проверяем пользователя
         user = await self._get_user(session, user_id)
+
+        # Если пользователя не существует
         if user is None:
-            # Нет пользователя - просим сделать /start
             await self._send_message(
                 event, "Пожалуйста, используйте команду /start для регистрации."
             )
             return
 
+        # Если пользователь забанен
+        if user.banned:
+            await self._send_message(
+                event, "Вы заблокированы и не можете использовать бота."
+            )
+            return
+
+        # Если пользователь не принял пользовательское соглашение
         if not user.agreement_accepted:
-            # Пользователь есть, но не принял соглашение
             await self._send_message(
                 event,
                 "Вы должны принять пользовательское соглашение. Используйте команду /start.",
             )
             return
 
-        # Если пользователь есть и соглашение принято, пропускаем дальше
+        # Если пользователь существует, не забанен и принято пользовательское соглашение - пропускаем дальше
         return await handler(event, data)
 
     def _extract_user_id(self, event: Update) -> int | None:

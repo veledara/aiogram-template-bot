@@ -16,8 +16,8 @@ async def init_db(engine: AsyncEngine):
     Инициализация базы данных: удаление всех таблиц и их повторное создание.
     """
     async with engine.begin() as conn:
-        logger.info("Удаляем все таблицы...")
-        await conn.run_sync(Base.metadata.drop_all)
+        # logger.info("Удаляем все таблицы...")
+        # await conn.run_sync(Base.metadata.drop_all)
 
         # Создаём таблицы заново
         logger.info("Создаём таблицы заново...")
